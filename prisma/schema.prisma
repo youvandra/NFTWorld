@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+
+model User {
+  address String @id
+  name String @unique
+  bio String @db.Text
+  email String @unique
+  twitterHandle String? @unique
+  instagramName String? @unique
+  website String? @unique
+  profilePhoto String @db.Text
+  coverPhoto String @db.Text
+  collections Collection[]
+}
+
+model Collection {
+  address String @id
+  name String
+  description String @db.Text
+  creator User @relation(fields: [creatorAddress],references: [address])
+  creatorAddress String
+  isFeatured Boolean @default(false)
+}
