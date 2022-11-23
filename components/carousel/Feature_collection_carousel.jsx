@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 import "swiper/css";
@@ -8,8 +8,44 @@ import "tippy.js/dist/tippy.css";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import Feature_collections_data from "../../data/Feature_collections_data";
 import Link from "next/link";
+import axios from "axios";
 
 const Feature_collections_carousel = () => {
+  const [data, setData] = useState(Feature_collections_data);
+
+  async function getCollections() {
+    const collections = await axios.get("/api/getCollections");
+    if (collections.data) {
+      const formatedCollections = collections.data.map(
+        ({
+          title,
+
+          address: id,
+          creator: { name: userName, profilePhoto: userImage },
+          itemsCount,
+          bigImage,
+          subImage1,
+          subImage2,
+          subImage3,
+        }) => ({
+          title,
+          id,
+          itemsCount,
+          userName,
+          bigImage,
+          subImage1,
+          subImage2,
+          subImage3,
+          userImage,
+        })
+      );
+      setData(formatedCollections);
+    }
+  }
+
+  useEffect(() => {
+    getCollections();
+  }, []);
   return (
     <>
       <Swiper
@@ -40,7 +76,7 @@ const Feature_collections_carousel = () => {
         }}
         className=" card-slider-4-columns !py-5"
       >
-        {Feature_collections_data.map((item) => {
+        {data.map((item) => {
           const {
             id,
             bigImage,
@@ -53,29 +89,21 @@ const Feature_collections_carousel = () => {
             userName,
           } = item;
 
-          const itemLink = bigImage
-            .split("/")
-            .slice(-1)
-            .toString()
-            .split("_")
-            .slice(1, 2)
-            .toString();
+          const itemLink = `/${id}`;
 
           return (
             <SwiperSlide key={id}>
               <article>
                 <div className="dark:bg-jacarta-700 dark:border-jacarta-700 border-jacarta-100 rounded-2xl border bg-white p-[1.1875rem] transition-shadow hover:shadow-lg">
-                  <Link href={`/item/item_${itemLink}`}>
+                  <Link href={`/collection/${itemLink}`}>
                     <a className="flex space-x-[0.625rem]">
                       <figure className="w-[74.5%] h-full">
-                        <Image
+                        <img
                           src={bigImage}
                           alt="item 1"
-                          className="rounded-[0.625rem]"
+                          className="rounded-[0.625rem] object-cover"
                           width={150}
                           height={240}
-                          objectFit="cover"
-                          layout="responsive"
                         />
                       </figure>
                       <span className="flex w-1/3 flex-col space-y-[0.625rem]">
@@ -102,7 +130,7 @@ const Feature_collections_carousel = () => {
                     </a>
                   </Link>
 
-                  <Link href={`/item/item_${itemLink}`}>
+                  <Link href={`/collection/${itemLink}`}>
                     <a className="font-display hover:text-accent dark:hover:text-accent text-jacarta-700 mt-4 block text-base dark:text-white">
                       {title}
                     </a>
@@ -110,7 +138,7 @@ const Feature_collections_carousel = () => {
 
                   <div className="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
                     <div className="flex flex-wrap items-center">
-                      <Link href={`/item/item_${itemLink}`}>
+                      <Link href={`/collection/${itemLink}`}>
                         <a className="mr-2 shrink-0">
                           <img
                             src={userImage}
@@ -120,7 +148,7 @@ const Feature_collections_carousel = () => {
                         </a>
                       </Link>
                       <span className="dark:text-jacarta-400 mr-1">by</span>
-                      <Link href={`/item/item_${itemLink}`}>
+                      <Link href={`/collection/${itemLink}`}>
                         <a className="text-accent">
                           <span>{userName}</span>
                         </a>

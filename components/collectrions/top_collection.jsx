@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { collection_data } from "../../data/collection_data";
 import HeadLine from "../headLine";
-import Image from "next/image";
 import axios from "axios";
 
 const Top_collection = () => {
