@@ -9,8 +9,9 @@ import Meta from '../components/Meta';
 import UserContext from '../components/UserContext';
 import { useEffect, useRef } from 'react';
 import { ThirdwebProvider } from "@thirdweb-dev/react/solana";
-import { useWallet } from "@solana/wallet-adapter-react";
+import { ConnectionProvider, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import MetaplexProvider from '../metaplex/MetaPlexProvider';
 require("@solana/wallet-adapter-react-ui/styles.css");
 // Change the network to the one you want to use: "mainnet-beta", "testnet", "devnet", "localhost" or your own RPC endpoint
 const desiredNetwork = "devnet";
@@ -36,21 +37,27 @@ function MyApp({ Component, pageProps }) {
 			<Meta title="NFT WORLD" />
 
 			<Provider store={store}>
-			<ThirdwebProvider network={desiredNetwork} wallet={wallet}>
-				<ThemeProvider enableSystem={true} attribute="class">
-					<MetaMaskProvider>
-						<UserContext.Provider value={{ scrollRef: scrollRef }}>
-							{pid === '/login' ? (
-								<Component {...pageProps} />
-							) : (
-								<Layout>
-									<Component {...pageProps} />
-								</Layout>
-							)}
-						</UserContext.Provider>
-					</MetaMaskProvider>
-				</ThemeProvider>
-			</ThirdwebProvider>
+				<ThirdwebProvider
+					autoConnect={true}
+					network={desiredNetwork}
+					wallet={wallet}
+				>
+					<ConnectionProvider endpoint="https://api.devnet.solana.com">
+						<MetaMaskProvider>
+							<MetaplexProvider>
+								<UserContext.Provider value={{ scrollRef: scrollRef }}>
+									{pid === "/login" ? (
+										<Component {...pageProps} />
+									) : (
+										<Layout>
+											<Component {...pageProps} />
+										</Layout>
+									)}
+								</UserContext.Provider>
+							</MetaplexProvider>
+						</MetaMaskProvider>
+					</ConnectionProvider>
+				</ThirdwebProvider>
 			</Provider>
 		</>
 	);
