@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectCoverflow, Ally } from "swiper";
 import "swiper/css";
@@ -6,8 +6,28 @@ import "swiper/css/navigation";
 import { coverflow_data } from "../../data/coverflow_data";
 import Link from "next/link";
 import Image from "next/image";
+import { useAuctionHouse } from "../../metaplex/useAuctionHouse";
+import axios from "axios";
 
 const CoverflowCarousel = () => {
+  const [nfts, setNFTs] = useState(coverflow_data);
+
+  async function getFeaturedNFTs() {
+    const { data } = await axios.get("/api/getFeaturedNFTs");
+
+    if (data) {
+      const formatedData = data.map(({ address, ...nft }) => ({
+        id: address,
+        ...nft,
+      }));
+      setNFTs(formatedData);
+    }
+  }
+
+  useEffect(() => {
+    getFeaturedNFTs();
+  }, []);
+
   return (
     <>
       {/* <!-- Coverflow Slider --> */}
@@ -50,15 +70,9 @@ const CoverflowCarousel = () => {
           }}
           className="swiper coverflow-slider !py-5"
         >
-          {coverflow_data.map((item) => {
+          {nfts.map((item) => {
             const { img, id, authorImage, authorName, title } = item;
-            const itemLink = img
-              .split("/")
-              .slice(-1)
-              .toString()
-              .replace(".jpg", "")
-              .replace(".gif", "")
-              .replace("_lg", "");
+            const itemLink = id;
             return (
               <SwiperSlide key={id}>
                 <article>
@@ -66,12 +80,12 @@ const CoverflowCarousel = () => {
                     <figure className="relative">
                       <Link href={"/item/" + itemLink}>
                         <a>
-                          <Image
+                          <img
                             src={img}
                             alt={title}
                             className="swiper-lazy h-[430px] w-full object-cover"
-                            height="430"
-                            width="379"
+                            height={"430px"}
+                            width={"379px"}
                           />
                         </a>
                       </Link>

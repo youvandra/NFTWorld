@@ -1,5 +1,6 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal, WalletIcon } from "@solana/wallet-adapter-react-ui";
+import axios from "axios";
 import { useMemo, useCallback, useState, useRef, useEffect } from "react";
 
 export default function SolanaWallet() {
@@ -114,6 +115,12 @@ export default function SolanaWallet() {
   useEffect(() => {
     if (!wallet) setVisible(true);
   }, []);
+
+  // useEffect(() => {
+  //   if (connected && publicKey) {
+  //     const _ = axios.get(`/api/signUser?address=${publicKey.toBase58()}`);
+  //   }
+  // }, [connected, publicKey]);
 
   return content;
 }

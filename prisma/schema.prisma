@@ -13,21 +13,52 @@ datasource db {
 model User {
   address String @id
   name String @unique
-  bio String @db.Text
-  email String @unique
+  bio String? @db.Text
+  email String? @unique
   twitterHandle String? @unique
   instagramName String? @unique
   website String? @unique
-  profilePhoto String @db.Text
-  coverPhoto String @db.Text
+  profilePhoto String? @db.Text
+  coverPhoto String? @db.Text
   collections Collection[]
 }
 
 model Collection {
   address String @id
-  name String
+  title String
   description String @db.Text
   creator User @relation(fields: [creatorAddress],references: [address])
   creatorAddress String
-  isFeatured Boolean @default(false)
+  isVerified Boolean @default(false)
+  floorPrice String
+  volumeTraded String
+  owners String
+  itemsCount  String
+  category category
+  top Boolean @default(false)
+  trneding Boolean @default(false)
+  recent Boolean @default(false)
+  bigImage String
+	subImage1 String
+	subImage2 String
+	subImage3 String
+	postTime String
+	postDate String
+}
+
+model FeaturedNFT {
+  address String @id
+  title String
+  img String
+  authorImage String
+  authorName String
+}
+
+enum category {
+  art
+  Collectibles
+  photography
+  music
+  domain
+  
 }
