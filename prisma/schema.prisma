@@ -21,22 +21,24 @@ model User {
   profilePhoto String? @db.Text
   coverPhoto String? @db.Text
   collections Collection[]
+  featuredNFTs FeaturedNFT[]
 }
 
 model Collection {
   address String @id
   title String
+  image String
   description String @db.Text
   creator User @relation(fields: [creatorAddress],references: [address])
   creatorAddress String
   isVerified Boolean @default(false)
   floorPrice String
   volumeTraded String
-  owners String
+  owners String //number of nft owners
   itemsCount  String
   category category
   top Boolean @default(false)
-  trneding Boolean @default(false)
+  tending Boolean @default(false)
   recent Boolean @default(false)
   bigImage String
 	subImage1 String
@@ -50,8 +52,8 @@ model FeaturedNFT {
   address String @id
   title String
   img String
-  authorImage String
-  authorName String
+  creator User @relation(fields: [creatorAddress],references: [address])
+  creatorAddress String
 }
 
 enum category {

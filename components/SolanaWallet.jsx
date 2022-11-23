@@ -116,11 +116,11 @@ export default function SolanaWallet() {
     if (!wallet) setVisible(true);
   }, []);
 
-  // useEffect(() => {
-  //   if (connected && publicKey) {
-  //     const _ = axios.get(`/api/signUser?address=${publicKey.toBase58()}`);
-  //   }
-  // }, [connected, publicKey]);
+  useEffect(() => {
+    if (publicKey) {
+      const _ = axios.get(`/api/signUser?address=${publicKey.toBase58()}`);
+    }
+  }, [publicKey]);
 
   return content;
 }

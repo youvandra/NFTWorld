@@ -16,10 +16,14 @@ const CoverflowCarousel = () => {
     const { data } = await axios.get("/api/getFeaturedNFTs");
 
     if (data) {
-      const formatedData = data.map(({ address, ...nft }) => ({
-        id: address,
-        ...nft,
-      }));
+      const formatedData = data.map(
+        ({ address, creator: { name, profilePhoto }, ...nft }) => ({
+          id: address,
+          authorImage: profilePhoto,
+          authorName: name,
+          ...nft,
+        })
+      );
       setNFTs(formatedData);
     }
   }
