@@ -15,7 +15,7 @@ const Single_post = () => {
 
 	return (
 		<div>
-			<Meta title={`${pid} || NFT World | NFT Marketplace Next.js Template`} />
+			<Meta title={`${pid} || NFTWORLD | NFT Marketplace Next.js Template`} />
 
 			<div className="pt-[5.5rem] lg:pt-24">
 				{/* <!-- Post --> */}

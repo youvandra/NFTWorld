@@ -362,12 +362,12 @@ const MblNavbar = ({ theme }) => {
               <img
                 src="https://i.ibb.co/4pY6n2W/NFT-WORLD.png"
                 className="max-h-7 dark:hidden"
-                alt="NFT World | NFT Marketplace"
+                alt="NFTWORLD | NFT Marketplace"
               />
 
               <img
                 src="https://i.ibb.co/Mp0mPny/NFT-WORLD-2.png"
-                alt="NFT World | NFT Marketplace"
+                alt="NFTWORLD | NFT Marketplace"
                 className="max-h-7 dark:block hidden"
               />
             </a>

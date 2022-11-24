@@ -36,7 +36,7 @@ const User = () => {
 
 	return (
 		<>
-			<Meta title="User || NFT World | NFT Marketplace Next.js Template" />
+			<Meta title="User || NFTWORLD | NFT Marketplace Next.js Template" />
 			{/* <!-- Profile --> */}
 			{user_data
 				.filter((item) => item.id === pid)

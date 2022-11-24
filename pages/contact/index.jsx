@@ -9,7 +9,7 @@ const Contact = () => {
 
   return (
     <div>
-      <Meta title="Contact || NFT World | NFT Marketplace Next.js Template" />
+      <Meta title="Contact || NFTWORLD | NFT Marketplace Next.js Template" />
       <div className="pt-[5.5rem] lg:pt-24">
         <ImageTitle text="Get in touch" image={bgImage} />
 

@@ -43,19 +43,21 @@ function MyApp({ Component, pageProps }) {
 					wallet={wallet}
 				>
 					<ConnectionProvider endpoint="https://api.devnet.solana.com">
-						<MetaMaskProvider>
-							<MetaplexProvider>
-								<UserContext.Provider value={{ scrollRef: scrollRef }}>
-									{pid === "/login" ? (
-										<Component {...pageProps} />
-									) : (
-										<Layout>
+						<ThemeProvider enableSystem={true} attribute="class">
+							<MetaMaskProvider>
+								<MetaplexProvider>
+									<UserContext.Provider value={{ scrollRef: scrollRef }}>
+										{pid === "/login" ? (
 											<Component {...pageProps} />
-										</Layout>
-									)}
-								</UserContext.Provider>
-							</MetaplexProvider>
-						</MetaMaskProvider>
+										) : (
+											<Layout>
+												<Component {...pageProps} />
+											</Layout>
+										)}
+									</UserContext.Provider>
+								</MetaplexProvider>
+							</MetaMaskProvider>
+						</ThemeProvider>	
 					</ConnectionProvider>
 				</ThirdwebProvider>
 			</Provider>

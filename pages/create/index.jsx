@@ -56,7 +56,7 @@ const Create = () => {
   ];
   return (
     <div>
-      <Meta title="Create || NFT World | NFT Marketplace Next.js Template" />
+      <Meta title="Create || NFTWORLD | NFT Marketplace Next.js Template" />
       {/* <!-- Create --> */}
       <section className="relative py-24">
         <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
@@ -328,7 +328,7 @@ const Create = () => {
                             Setting your asset as explicit and sensitive
                             content, like pornography and other not safe for
                             work (NSFW) content, will protect users with safe
-                            search while browsing NFT World
+                            search while browsing NFTWORLD
                           </span>
                         }
                       >
@@ -375,7 +375,7 @@ const Create = () => {
                         Setting your asset as explicit and sensitive content,
                         like pornography and other not safe for work (NSFW)
                         content, will protect users with safe search while
-                        browsing NFT World.
+                        browsing NFTWORLD.
                       </span>
                     }
                   >
@@ -434,7 +434,7 @@ const Create = () => {
                       Setting your asset as explicit and sensitive content, like
                       pornography and other not safe for work (NSFW) content,
                       will protect users with safe search while browsing
-                      NFT World.
+                      NFTWORLD.
                     </span>
                   }
                 >

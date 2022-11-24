@@ -6,7 +6,7 @@ import Meta from '../../components/Meta';
 const newsletter = () => {
 	return (
 		<div>
-			<Meta title="newseletter || NFT World | NFT Marketplace Next.js Template" />
+			<Meta title="newseletter || NFTWORLD | NFT Marketplace Next.js Template" />
 			<div className="pt-[5.5rem] lg:pt-24">
 				<Story compFor="news" />
 			</div>
