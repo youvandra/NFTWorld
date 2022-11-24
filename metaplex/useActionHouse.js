@@ -13,11 +13,13 @@ export function useAuctionHouse() {
       .findByAddress({ address: new PublicKey(AUCTION_HOUSE_ADDRESS) });
   }
 
-  async function getListings({ seller } = { seller: undefined }) {
+  async function getListings(
+    args = { seller: undefined, metadata: undefined, mint: undefined }
+  ) {
     const auctionHouse = await getAuctionHouse();
     const rawListings = await metaplex
       .auctionHouse()
-      .findListings({ auctionHouse, seller });
+      .findListings({ auctionHouse, ...args });
 
     const formatedRawListings = rawListings.map(
       ({ sellerAddress, price, metadataAddress }) => ({
@@ -37,9 +39,46 @@ export function useAuctionHouse() {
       })
     );
 
-    console.log(listing);
+    // console.log(listing);
     return listing;
   }
 
-  return { getAuctionHouse, getListings };
+  async function getBids(
+    args = { seller: undefined, metadata: undefined, mint: undefined }
+  ) {
+    const auctionHouse = await getAuctionHouse();
+
+    const lazyBids = await metaplex
+      .auctionHouse()
+      .findBids({ auctionHouse, ...args });
+    
+    const loadedBids = await Promise.all(
+      lazyBids.map(
+        async (lazyBid) => await metaplex.auctionHouse().loadBid({ lazyBid })
+      )
+    );
+
+    const formatedBids = await Promise.all(
+      loadedBids.map(async (bid) => {
+        const metadata = await returnNFTwithMetadata(bid.asset);
+        return { ...bid, asset: { ...bid.asset, metadata } };
+      })
+    );
+
+    return formatedBids;
+  }
+
+  async function cancelBid(bid) {
+    const auctionHouse = await getAuctionHouse();
+
+    return await metaplex.auctionHouse().cancelBid({ auctionHouse, bid });
+  }
+
+  async function sellBid(bid) {
+    const auctionHouse = await getAuctionHouse();
+
+    metaplex.auctionHouse().sell({ auctionHouse, bid });
+  }
+
+  return { getAuctionHouse, getListings, getBids, sellBid, cancelBid };
 }
