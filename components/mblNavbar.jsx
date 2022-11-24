@@ -1073,14 +1073,14 @@ const MblNavbar = ({ theme }) => {
                   </span>
                   <div className="flex items-center">
                     <div className="-ml-1 mr-1 h-[1.125rem] w-[1.125rem]">
-                      <img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=023"/>
+                      <img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=023" />
                     </div>
                     <span className="text-green text-lg font-bold">
                       {(balance / 1000000000).toPrecision(4)} SOL
                     </span>
                   </div>
                 </div>
-                <Link href="/user/avatar_6">
+                <Link href={`/user/${publicKey.toBase58()}`}>
                   <a className="dark:hover:bg-jacarta-600 hover:text-accent focus:text-accent hover:bg-jacarta-50 flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

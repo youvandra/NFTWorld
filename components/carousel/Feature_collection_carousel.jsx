@@ -101,9 +101,7 @@ const Feature_collections_carousel = () => {
                         <img
                           src={bigImage}
                           alt="item 1"
-                          className="rounded-[0.625rem] object-cover"
-                          width={150}
-                          height={240}
+                          className="rounded-[0.625rem] object-cover h-[240px] w-[150px]"
                         />
                       </figure>
                       <span className="flex w-1/3 flex-col space-y-[0.625rem]">

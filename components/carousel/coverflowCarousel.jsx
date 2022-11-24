@@ -75,7 +75,8 @@ const CoverflowCarousel = () => {
           className="swiper coverflow-slider !py-5"
         >
           {nfts.map((item) => {
-            const { img, id, authorImage, authorName, title } = item;
+            const { img, id, authorImage, authorName, title, creatorAddress } =
+              item;
             const itemLink = id;
             return (
               <SwiperSlide key={id}>
@@ -113,7 +114,7 @@ const CoverflowCarousel = () => {
                               </span>
                             </a>
                           </Link>
-                          <Link href="/user/avatar_6">
+                          <Link href={`/user/${creatorAddress}`}>
                             <a className="text-2xs text-accent">{authorName}</a>
                           </Link>
                         </div>
