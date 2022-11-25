@@ -33,7 +33,6 @@ const Item = () => {
       .nfts()
       .findByMint({ mintAddress: new PublicKey(address) });
     const _nft = await returnNFTwithMetadata(rawNFT);
-    console.log(_nft);
     setNFT(_nft);
   }
 
@@ -42,7 +41,6 @@ const Item = () => {
     const [listing] = await metaplex
       .auctionHouse()
       .findListings({ auctionHouse, metadata: nft.metadataAddress });
-    console.log({ listing });
     if (listing) setNFTListing(listing);
   }
 

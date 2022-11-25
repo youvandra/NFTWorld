@@ -21,7 +21,6 @@ const Trending_categories_items = ({ type }) => {
 
   async function getOwnedNFTs() {
     const nfts = await getNFTsByOwner(address);
-    console.log(nfts);
     const formatedNFTs = nfts.map(({ address, name, metadata: { image } }) => ({
       id: address,
       title: name,
@@ -32,7 +31,6 @@ const Trending_categories_items = ({ type }) => {
 
   async function getCreatedNFTs() {
     const nfts = await getNFTsByCreator(address);
-    console.log("created: ", nfts);
     const formatedNFTs = nfts.map(({ address, name, metadata: { image } }) => ({
       id: address,
       title: name,
