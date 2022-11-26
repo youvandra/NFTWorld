@@ -28,6 +28,7 @@ model Collection {
   address String @id
   title String
   image String
+  banner String 
   description String @db.Text
   creator User @relation(fields: [creatorAddress],references: [address])
   creatorAddress String
