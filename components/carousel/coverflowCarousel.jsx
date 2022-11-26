@@ -6,7 +6,11 @@ import "swiper/css/navigation";
 import { coverflow_data } from "../../data/coverflow_data";
 import Link from "next/link";
 import Image from "next/image";
+<<<<<<< HEAD
 // import { useAuctionHouse } from "../../metaplex/useAuctionHouse";
+=======
+import { useAuctionHouse } from "../../metaplex/useAuctionHouse";
+>>>>>>> origin/anas-dev
 import axios from "axios";
 
 const CoverflowCarousel = () => {
@@ -75,7 +79,12 @@ const CoverflowCarousel = () => {
           className="swiper coverflow-slider !py-5"
         >
           {nfts.map((item) => {
+<<<<<<< HEAD
             const { img, id, authorImage, authorName, title } = item;
+=======
+            const { img, id, authorImage, authorName, title, creatorAddress } =
+              item;
+>>>>>>> origin/anas-dev
             const itemLink = id;
             return (
               <SwiperSlide key={id}>
@@ -113,7 +122,7 @@ const CoverflowCarousel = () => {
                               </span>
                             </a>
                           </Link>
-                          <Link href="/user/avatar_6">
+                          <Link href={`/user/${creatorAddress}`}>
                             <a className="text-2xs text-accent">{authorName}</a>
                           </Link>
                         </div>

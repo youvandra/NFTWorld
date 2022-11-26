@@ -15,7 +15,11 @@ import { bidsModalShow } from "../../redux/counterSlice";
 import { useMetaplex } from "../../metaplex/useMetaplex";
 import { PublicKey } from "@metaplex-foundation/js";
 import { returnNFTwithMetadata } from "../../utils/returnNFTwithMetadata";
+<<<<<<< HEAD
 import { useAuctionHouse } from "../../metaplex/useActionHouse";
+=======
+import { useAuctionHouse } from "../../metaplex/useAuctionHouse";
+>>>>>>> origin/anas-dev
 
 const Item = () => {
   const dispatch = useDispatch();
@@ -33,7 +37,10 @@ const Item = () => {
       .nfts()
       .findByMint({ mintAddress: new PublicKey(address) });
     const _nft = await returnNFTwithMetadata(rawNFT);
+<<<<<<< HEAD
     console.log(_nft);
+=======
+>>>>>>> origin/anas-dev
     setNFT(_nft);
   }
 
@@ -42,7 +49,10 @@ const Item = () => {
     const [listing] = await metaplex
       .auctionHouse()
       .findListings({ auctionHouse, metadata: nft.metadataAddress });
+<<<<<<< HEAD
     console.log({ listing });
+=======
+>>>>>>> origin/anas-dev
     if (listing) setNFTListing(listing);
   }
 
@@ -285,7 +295,11 @@ const Item = () => {
                         </figure>
                         <div>
                           <div className="flex items-center whitespace-nowrap">
+<<<<<<< HEAD
                             <Tippy content={<span>SOL</span>}>
+=======
+                            <Tippy content={<span>ETH</span>}>
+>>>>>>> origin/anas-dev
                               <span className="-ml-1">
                                 <svg className="icon mr-1 h-4 w-4">
                                   <use xlinkHref="/icons.svg#icon-ETH"></use>
@@ -293,7 +307,11 @@ const Item = () => {
                               </span>
                             </Tippy>
                             <span className="text-green text-lg font-medium leading-tight tracking-tight">
+<<<<<<< HEAD
                               {"price"} SOL
+=======
+                              {"price"} ETH
+>>>>>>> origin/anas-dev
                             </span>
                           </div>
                           <span className="dark:text-jacarta-300 text-jacarta-400 text-sm">

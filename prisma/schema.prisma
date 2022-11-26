@@ -28,6 +28,10 @@ model Collection {
   address String @id
   title String
   image String
+<<<<<<< HEAD
+=======
+  banner String 
+>>>>>>> origin/anas-dev
   description String @db.Text
   creator User @relation(fields: [creatorAddress],references: [address])
   creatorAddress String
@@ -63,4 +67,8 @@ enum category {
   music
   domain
   
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/anas-dev

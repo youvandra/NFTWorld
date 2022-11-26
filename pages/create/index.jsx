@@ -11,6 +11,8 @@ import Proparties_modal from "../../components/modal/proparties_modal";
 import { useDispatch } from "react-redux";
 import { showPropatiesModal } from "../../redux/counterSlice";
 import Meta from "../../components/Meta";
+import { useForm } from "react-hook-form";
+import { useNFTs } from "../../metaplex/useNFTs";
 
 const Create = () => {
   const fileTypes = [
@@ -26,13 +28,9 @@ const Create = () => {
     "GLB",
     "GLTF",
   ];
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(null);
 
   const dispatch = useDispatch();
-
-  const handleChange = (file) => {
-    setFile(file.name);
-  };
 
   const popupItemData = [
     {
@@ -54,9 +52,22 @@ const Create = () => {
       icon: "stats-icon",
     },
   ];
+
+  const { handleSubmit, register, setValue } = useForm();
+  const { createNFT } = useNFTs();
+
+  const handleChange = (file) => {
+    setFile(file);
+    setValue("file", file);
+  };
+
   return (
     <div>
+<<<<<<< HEAD
       <Meta title="Create || NFTWORLD | NFT Marketplace Next.js Template" />
+=======
+      <Meta title="NFT World - Create" />
+>>>>>>> origin/anas-dev
       {/* <!-- Create --> */}
       <section className="relative py-24">
         <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
@@ -66,7 +77,7 @@ const Create = () => {
             className="h-full w-full"
           />
         </picture>
-        <div className="container">
+        <form onSubmit={handleSubmit(createNFT)} className="container">
           <h1 className="font-display text-jacarta-700 py-16 text-center text-4xl font-medium dark:text-white">
             Create
           </h1>
@@ -81,7 +92,7 @@ const Create = () => {
 
               {file ? (
                 <p className="dark:text-jacarta-300 text-2xs mb-3">
-                  successfully uploaded : {file}
+                  successfully uploaded : {file.name}
                 </p>
               ) : (
                 <p className="dark:text-jacarta-300 text-2xs mb-3">
@@ -128,6 +139,7 @@ const Create = () => {
                 Name<span className="text-red">*</span>
               </label>
               <input
+                {...register("name")}
                 type="text"
                 id="item-name"
                 className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
@@ -150,6 +162,7 @@ const Create = () => {
                 welcome to link to your own webpage with more details.
               </p>
               <input
+                {...register("externalLink")}
                 type="url"
                 id="item-external-link"
                 className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
@@ -170,6 +183,7 @@ const Create = () => {
                 underneath its image. Markdown syntax is supported.
               </p>
               <textarea
+                {...register("description")}
                 id="item-description"
                 className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
                 rows="4"
@@ -213,13 +227,13 @@ const Create = () => {
                 </div>
               </div>
 
-              {/* dropdown */}
-              <div className="dropdown my-1 cursor-pointer">
-                <Collection_dropdown2
-                  data={collectionDropdown2_data}
-                  collection={true}
-                />
-              </div>
+              <input
+                {...register("collection")}
+                type="url"
+                id="item-external-link"
+                className="dark:bg-jacarta-700 border-jacarta-100 hover:ring-accent/10 focus:ring-accent dark:border-jacarta-600 dark:placeholder:text-jacarta-300 w-full rounded-lg py-3 px-3 hover:ring-2 dark:text-white"
+                placeholder="your collection address"
+              />
             </div>
 
             {/* <!-- Properties --> */}
@@ -265,40 +279,6 @@ const Create = () => {
             <Proparties_modal />
 
             {/* <!-- Properties --> */}
-
-            {/* <!-- Unlockable Content --> */}
-            <div className="dark:border-jacarta-600 border-jacarta-100 relative border-b py-6">
-              <div className="flex items-center justify-between">
-                <div className="flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    className="fill-accent mr-2 mt-px h-4 w-4 shrink-0"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M7 10h13a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 0 1 13.262-3.131l-1.789.894A5 5 0 0 0 7 9v1zm-2 2v8h14v-8H5zm5 3h4v2h-4v-2z" />
-                  </svg>
-
-                  <div>
-                    <label className="font-display text-jacarta-700 block dark:text-white">
-                      Unlockable Content
-                    </label>
-                    <p className="dark:text-jacarta-300">
-                      Include unlockable content that can only be revealed by
-                      the owner of the item.
-                    </p>
-                  </div>
-                </div>
-                <input
-                  type="checkbox"
-                  value="checkbox"
-                  name="check"
-                  className="checked:bg-accent checked:focus:bg-accent checked:hover:bg-accent after:bg-jacarta-400 bg-jacarta-100 relative h-6 w-[2.625rem] cursor-pointer appearance-none rounded-full border-none after:absolute after:top-[0.1875rem] after:left-[0.1875rem] after:h-[1.125rem] after:w-[1.125rem] after:rounded-full after:transition-all checked:bg-none checked:after:left-[1.3125rem] checked:after:bg-white focus:ring-transparent focus:ring-offset-0"
-                />
-              </div>
-            </div>
 
             {/* <!-- Explicit & Sensitive Content --> */}
             <div className="dark:border-jacarta-600 border-jacarta-100 relative mb-6 border-b py-6">
@@ -357,6 +337,7 @@ const Create = () => {
               </div>
             </div>
 
+<<<<<<< HEAD
             {/* <!-- Supply --> */}
             <div className="mb-6">
               <label
@@ -468,15 +449,17 @@ const Create = () => {
               />
             </div>
 
+=======
+>>>>>>> origin/anas-dev
             {/* <!-- Submit --> */}
             <button
-              disabled
-              className="bg-accent-lighter cursor-default rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
+              type="Submit"
+              className="bg-accent-dark disabled:bg-accent-light rounded-full py-3 px-8 text-center font-semibold text-white transition-all"
             >
               Create
             </button>
           </div>
-        </div>
+        </form>
       </section>
       {/* <!-- end create --> */}
     </div>

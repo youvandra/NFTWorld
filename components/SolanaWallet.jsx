@@ -29,7 +29,6 @@ export default function SolanaWallet() {
   });
 
   const content = useMemo(() => {
-    console.log(wallet);
     if (!wallet)
       return (
         <button

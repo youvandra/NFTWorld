@@ -89,4 +89,8 @@ export const uploadFileToIPFS = async (file) => {
         message: error.message,
       };
     });
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> origin/anas-dev
