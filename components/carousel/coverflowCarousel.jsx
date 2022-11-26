@@ -7,10 +7,14 @@ import { coverflow_data } from "../../data/coverflow_data";
 import Link from "next/link";
 import Image from "next/image";
 <<<<<<< HEAD
+<<<<<<< HEAD
 // import { useAuctionHouse } from "../../metaplex/useAuctionHouse";
 =======
 import { useAuctionHouse } from "../../metaplex/useAuctionHouse";
 >>>>>>> origin/anas-dev
+=======
+import { useAuctionHouse } from "../../metaplex/useAuctionHouse";
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
 import axios from "axios";
 
 const CoverflowCarousel = () => {
@@ -80,11 +84,16 @@ const CoverflowCarousel = () => {
         >
           {nfts.map((item) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
             const { img, id, authorImage, authorName, title } = item;
 =======
             const { img, id, authorImage, authorName, title, creatorAddress } =
               item;
 >>>>>>> origin/anas-dev
+=======
+            const { img, id, authorImage, authorName, title, creatorAddress } =
+              item;
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
             const itemLink = id;
             return (
               <SwiperSlide key={id}>

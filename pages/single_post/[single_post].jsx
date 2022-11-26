@@ -16,10 +16,13 @@ const Single_post = () => {
       <Meta title={`${pid} || Xhibiter | NFT Marketplace Next.js Template`} />
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return (
 		<div>
 			<Meta title={`${pid} || NFTWORLD | NFT Marketplace Next.js Template`} />
 =======
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
       <div className="pt-[5.5rem] lg:pt-24">
         {/* <!-- Post --> */}
         <section className="relative py-16 md:py-24">
@@ -54,7 +57,10 @@ const Single_post = () => {
                         <a href="single-post.html">DIGITAL ART</a>
                       </span>
                     </div>
+<<<<<<< HEAD
 >>>>>>> origin/anas-dev
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
 
                     <h1 className="font-display text-jacarta-700 mb-4 text-2xl dark:text-white sm:text-5xl">
                       {title}

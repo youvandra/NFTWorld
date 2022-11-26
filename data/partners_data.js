@@ -42,10 +42,10 @@ const works_data = [
 		title: 'Gas-free Marketplace',
 	},
 	{
-		id: '4Advertise NFTWORLD',
-		text: 'Advertise NFTWORLD',
+		id: '4Advertise Xhibiter',
+		text: 'Advertise Xhibiter',
 		icon: 'advertise',
-		title: 'Advertise NFTWORLD',
+		title: 'Advertise Xhibiter',
 	},
 	{
 		id: '5Earn 20% Commission Per Sale!',

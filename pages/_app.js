@@ -10,6 +10,7 @@ import UserContext from "../components/UserContext";
 import { useEffect, useRef } from "react";
 import { ThirdwebProvider } from "@thirdweb-dev/react/solana";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ConnectionProvider, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import MetaplexProvider from '../metaplex/MetaPlexProvider';
@@ -18,6 +19,11 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { ConnectionProvider } from "@solana/wallet-adapter-react";
 import MetaplexProvider from "../metaplex/MetaPlexProvider";
 >>>>>>> origin/anas-dev
+=======
+import { useWallet } from "@solana/wallet-adapter-react";
+import { ConnectionProvider } from "@solana/wallet-adapter-react";
+import MetaplexProvider from "../metaplex/MetaPlexProvider";
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
 require("@solana/wallet-adapter-react-ui/styles.css");
 // Change the network to the one you want to use: "mainnet-beta", "testnet", "devnet", "localhost" or your own RPC endpoint
 const desiredNetwork = "devnet";
@@ -42,6 +48,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Meta title="NFT WORLD" />
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 			<Provider store={store}>
 				<ThirdwebProvider
@@ -71,6 +78,8 @@ function MyApp({ Component, pageProps }) {
 		</>
 	);
 =======
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
       <Provider store={store}>
         <ThirdwebProvider
           autoConnect={true}
@@ -98,7 +107,10 @@ function MyApp({ Component, pageProps }) {
       </Provider>
     </>
   );
+<<<<<<< HEAD
 >>>>>>> origin/anas-dev
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
 }
 
 export default MyApp;

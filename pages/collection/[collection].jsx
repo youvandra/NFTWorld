@@ -23,12 +23,16 @@ const Collection = () => {
   const { program } = useProgram(address);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return (
 		<>
 			<Meta title={`${pid} || NFTWORLD | NFT Marketplace Next.js Template`} />
 =======
   const { data, isLoading } = useNFTs(program);
 >>>>>>> origin/anas-dev
+=======
+  const { data, isLoading } = useNFTs(program);
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
 
   async function getCollection() {
     const { data } = await axios.get(

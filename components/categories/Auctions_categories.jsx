@@ -12,6 +12,7 @@ import Image from "next/image";
 import auctions_category_data from "../../data/auctions_category_data";
 import Likes from "../likes";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useAuctionHouse } from "../../metaplex/useActionHouse";
 
 const Auctions_categories = () => {
@@ -182,6 +183,8 @@ const Auctions_categories = () => {
         </div>
     );
 =======
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
 import { useAuctionHouse } from "../../metaplex/useAuctionHouse";
 
 const Auctions_categories = () => {
@@ -351,7 +354,10 @@ const Auctions_categories = () => {
       </section>
     </div>
   );
+<<<<<<< HEAD
 >>>>>>> origin/anas-dev
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
 };
 
 export default Auctions_categories;

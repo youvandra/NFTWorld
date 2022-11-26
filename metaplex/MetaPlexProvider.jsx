@@ -1,5 +1,6 @@
 import {
 <<<<<<< HEAD
+<<<<<<< HEAD
     Metaplex,
     walletAdapterIdentity,
     mockStorage,
@@ -29,6 +30,8 @@ import {
     );
   }
 =======
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
   Metaplex,
   walletAdapterIdentity,
   mockStorage,
@@ -57,4 +60,7 @@ export default function MetaplexProvider({ children }) {
     </MetaplexContext.Provider>
   );
 }
+<<<<<<< HEAD
 >>>>>>> origin/anas-dev
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa

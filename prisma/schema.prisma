@@ -29,9 +29,13 @@ model Collection {
   title String
   image String
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   banner String 
 >>>>>>> origin/anas-dev
+=======
+  banner String 
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
   description String @db.Text
   creator User @relation(fields: [creatorAddress],references: [address])
   creatorAddress String
@@ -68,7 +72,11 @@ enum category {
   domain
   
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 }
 >>>>>>> origin/anas-dev
+=======
+}
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa

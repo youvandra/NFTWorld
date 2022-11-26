@@ -35,6 +35,7 @@ const User = () => {
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return (
 		<>
 			<Meta title="User || NFTWORLD | NFT Marketplace Next.js Template" />
@@ -81,12 +82,17 @@ const User = () => {
 									</figure>
 								</div>
 =======
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
   useEffect(() => {
     setTimeout(() => {
       setCopied(false);
     }, 2000);
   }, [copied]);
+<<<<<<< HEAD
 >>>>>>> origin/anas-dev
+=======
+>>>>>>> 024efb6e90ce52d92cd3b794071f1630206a98aa
 
   async function getUser() {
     const { data } = await axios.get(
